@@ -52,10 +52,6 @@ def cb(msg):
             velocity_publisher.publish(vel_msg)
             rospy.sleep(0.1) # allow time to move away from the wall, to not trigger another turn_speed assignment immediately
 
-    else:
-        vel_msg.linear.x = 3
-        vel_msg.angular.z = 0
-
     velocity_publisher.publish(vel_msg)
 
 rospy.init_node('auto_turtle')
