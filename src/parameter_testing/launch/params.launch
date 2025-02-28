@@ -1,0 +1,10 @@
+<launch>
+
+<node pkg='parameter_testing' type='our_set_private_param.py' name='node1_ns' output='screen'>
+    <param name='~private_example' value='private_from_launch_file'/>
+</node>
+
+<node pkg='parameter_testing' type='our_set_private_param.py' name='node2_ns' output='screen'>
+    <param name='~private_example' value='private_from_launch_file'/>
+</node>
+</launch>

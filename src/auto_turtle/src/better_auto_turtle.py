@@ -42,15 +42,20 @@ def cb(msg):
         turn_speed = 0
 
     if turn_speed != 0: # if a wall detection has assigned a turn speed
-            vel_msg.linear.x = 0 # stop linear movement
-            vel_msg.angular.z = turn_speed # set angular speed from the previous pose theta
-            velocity_publisher.publish(vel_msg) # publish speeds
-            rospy.loginfo(f'msg.x: {msg.x}')
-            rospy.sleep(1) # sleep 1 sec to turn
-            vel_msg.angular.z = 0
-            vel_msg.linear.x = 3 
-            velocity_publisher.publish(vel_msg)
-            rospy.sleep(0.1) # allow time to move away from the wall, to not trigger another turn_speed assignment immediately
+            turning = True
+            while turning:    
+                vel_msg.linear.x = 0 # stop linear movement
+                vel_msg.angular.z = turn_speed # set angular speed from the previous pose theta
+                velocity_publisher.publish(vel_msg) # publish speeds
+                rospy.loginfo(f'msg.x: {msg.x}')
+                # rospy.sleep(1) # sleep 1 sec to turn
+                if abs(msg.theta - turn_speed) < 0.2:
+                    turn_speed = 0
+                    turning = False
+                    vel_msg.angular.z = 0
+                    vel_msg.linear.x = 3 
+                    velocity_publisher.publish(vel_msg)
+            # rospy.sleep(0.1) # allow time to move away from the wall, to not trigger another turn_speed assignment immediately
 
     velocity_publisher.publish(vel_msg)
 

@@ -14,7 +14,3 @@ sub = rospy.Subscriber(topic_to_listen, String, cb)
 rate = rospy.Rate(1)
 
 rospy.spin()
-
-# while not rospy.is_shutdown():
-#     print(sub.callback)
-#     rate.sleep()

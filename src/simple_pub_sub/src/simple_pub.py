@@ -11,3 +11,4 @@ while not rospy.is_shutdown():
     hello_str = 'Hello from ROS publisher'
     pub.publish(hello_str)
     rate.sleep()
+
