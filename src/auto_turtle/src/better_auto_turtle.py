@@ -8,7 +8,6 @@ import random
 
 turning, direction, target_angle = 0,0,0
 
-
 def cb(msg):
     global turning, target_angle, direction
 
@@ -25,32 +24,32 @@ def cb(msg):
 
         if msg.x > 10: # RIGHT
             if msg.theta < 0: # downward
-                target_angle = random.uniform(-0.1,0.1) + 0.75*-pi
+                target_angle = random.uniform(-0.2,0.2) + 0.75*-pi
                 direction = -1
             else: # upward
-                target_angle = random.uniform(-0.1,0.1) + 0.75*pi
+                target_angle = random.uniform(-0.2,0.2) + 0.75*pi
                 direction = 1
         elif msg.y > 10: # TOP
             if msg.theta > pi/2: #going right
-                target_angle = random.uniform(-0.1,0.1) + 0.75*-pi
+                target_angle = random.uniform(-0.2,0.2) + 0.75*-pi
                 direction = 1
             else:
-                target_angle = random.uniform(-0.1,0.1) + 0.25*-pi
+                target_angle = random.uniform(-0.2,0.2) + 0.25*-pi
                 direction = -1
         elif msg.x < 1: # LEFT
             if msg.theta < 0: # downward
-                target_angle = random.uniform(-0.1,0.1) + 0.25*-pi
+                target_angle = random.uniform(-0.2,0.2) + 0.25*-pi
                 direction = 1
                 # target_angle = -(pi-msg.theta) + random_angle
             else: # upward
-                target_angle = random.uniform(-0.1,0.1) + 0.25*pi
+                target_angle = random.uniform(-0.2,0.2) + 0.25*pi
                 direction = -1
         elif msg.y < 1: # BOTTOM
             if msg.theta > -pi/2: #going right
-                target_angle = random.uniform(-0.1,0.1) + 0.25*pi
+                target_angle = random.uniform(-0.2,0.2) + 0.25*pi
                 direction = 1
             else:
-                target_angle = random.uniform(-0.1,0.1) + 0.75*pi
+                target_angle = random.uniform(-0.2,0.2) + 0.75*pi
                 direction = -1
 
         rospy.loginfo(f'target_angle {target_angle}')
