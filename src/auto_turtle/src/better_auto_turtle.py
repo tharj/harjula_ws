@@ -66,7 +66,6 @@ def cb(msg):
 
     else: # default linear moving state
         vel_msg.linear.x = 4.0 
-        vel_msg.angular.z = 0
         vel_msg.angular.z = -2 if (random.uniform(-1, 1) < 0) else 2
 
     velocity_publisher.publish(vel_msg)

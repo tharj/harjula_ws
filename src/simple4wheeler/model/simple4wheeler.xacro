@@ -1,0 +1,36 @@
+<robot name="simple4wheeler" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="pi" value="3.142" />
+
+    <link name="map">
+    </link>
+
+    <link name="link_chassis">
+        <!-- pose x, y, z, roll, pitch, yaw-->
+        <pose> 0 0 0.1 0 0 0</pose>
+        <inertial>
+            <mass value="3"/>
+            <origin xyz="0.0 0.0 0.1" rpy="0.0 0.0 0.0"/>
+            <inertia ixx="0.03954"
+                    ixy="0"
+                    ixz="0"
+                    iyy="0.10620"
+                    iyz="0"
+                    izz="0.10620" />
+        </inertial>
+        <collision name="collision_chassis">
+            <geometry>
+                <box size="0.5 0.3 0.07"/>
+            </geometry>
+        </collision>
+        <visual>
+            <geometry>
+                <box size="0.5 0.3 0.07"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <joint name="joint_map" type="fixed">
+        <parent link="map"/>
+        <child link="link_chassis"/>
+    </joint>
+</robot>
